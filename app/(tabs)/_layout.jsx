@@ -28,8 +28,8 @@ const TabsLayout = () => {
 					tabBarInactiveTintColor: '#cdcde0',
 					tabBarStyle: {
 						backgroundColor: '#161622',
-						borderTopWidth: 1,
 						borderTopColor: '#232533',
+						borderTopWidth: 1,
 						height: 110,
 					},
 				}}>
@@ -40,9 +40,9 @@ const TabsLayout = () => {
 						tabBarIcon: ({ color, focused }) => (
 							<TabIcon
 								icon={icons.home}
-								name='Home'
-								color={color}
 								focused={focused}
+								color={color}
+								name='Home'
 							/>
 						),
 					}}
