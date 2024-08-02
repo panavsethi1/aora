@@ -28,55 +28,49 @@ const Home = () => {
 
 	return (
 		<SafeAreaView className='bg-primary h-full'>
-			{isLoading ? (
-				<View className='h-full items-center justify-center'>
-					<Text className='text-white font-pmedium text-xl'>Loading</Text>
-				</View>
-			) : (
-				<FlatList
-					data={posts}
-					keyExtractor={(item) => item.$id}
-					renderItem={({ item }) => <VideoCard post={item} />}
-					ListHeaderComponent={() => (
-						<View className='flex my-5 px-4 space-y-6'>
-							<View className='flex justify-between items-start flex-row mb-6'>
-								<View>
-									<Text className='font-pmedium text-sm text-gray-100'>
-										Welcome Back
-									</Text>
-									<Text className='text-2xl font-psemibold text-white'>
-										{user.username}
-									</Text>
-								</View>
-								<View className='mt-1.5'>
-									<Image
-										source={images.logoSmall}
-										className='w-9 h-10'
-										resizeMode='contain'
-									/>
-								</View>
-							</View>
-							<SearchInput />
-							<View className='w-full flex-1 pt-3 pb-8'>
-								<Text className='text-lg font-pregular text-gray-100 mb-3'>
-									Latest Videos
+			<FlatList
+				data={posts}
+				keyExtractor={(item) => item.$id}
+				renderItem={({ item }) => <VideoCard post={item} />}
+				ListHeaderComponent={() => (
+					<View className='flex my-6 px-4 space-y-6'>
+						<View className='flex justify-between items-start flex-row mb-6'>
+							<View>
+								<Text className='font-pmedium text-sm text-gray-100'>
+									Welcome Back
 								</Text>
-
-								<Trending posts={latestPosts} />
+								<Text className='text-2xl font-psemibold text-white'>
+									{user.username}
+								</Text>
+							</View>
+							<View className='mt-1.5'>
+								<Image
+									source={images.logoSmall}
+									className='w-9 h-10'
+									resizeMode='contain'
+								/>
 							</View>
 						</View>
-					)}
-					ListEmptyComponent={() => (
-						<EmptyState
-							title='No Videos Found'
-							subtitle='No videos created yet'
-						/>
-					)}
-					refreshControl={
-						<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-					}
-				/>
-			)}
+						<SearchInput />
+						<View className='w-full flex-1 pt-3 pb-8'>
+							<Text className='text-lg font-pregular text-gray-100 mb-3'>
+								Latest Videos
+							</Text>
+
+							<Trending posts={latestPosts} />
+						</View>
+					</View>
+				)}
+				ListEmptyComponent={() => (
+					<EmptyState
+						title='No Videos Found'
+						subtitle='No videos created yet'
+					/>
+				)}
+				refreshControl={
+					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+				}
+			/>
 		</SafeAreaView>
 	);
 };

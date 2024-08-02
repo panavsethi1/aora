@@ -23,6 +23,8 @@ const Create = () => {
 		prompt: '',
 	});
 
+	const [uploading, setUploading] = useState(false);
+
 	const handleSubmit = () => {
 		if (!title.length || !video || !thumbnail || !prompt.length) {
 			return Alert.alert(
@@ -56,7 +58,7 @@ const Create = () => {
 			}
 		} else {
 			setTimeout(() => {
-				Alert.alert('Document picked', JSON.stringify(result, null, 2));
+				console.log('Document picked', JSON.stringify(result, null, 2));
 			}, 100);
 		}
 	};
@@ -142,7 +144,7 @@ const Create = () => {
 				<CustomButton
 					title='Submit & Publish'
 					handlePress={handleSubmit}
-					containerStyles='mt-7'
+					containerStyles='mt-7 mb-2'
 					isLoading={uploading}
 				/>
 			</ScrollView>
